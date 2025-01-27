@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCare</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .emergency-contacts {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 2rem auto;
+      max-width: 1200px;
+    }
+
+    .emergency-contacts h3 {
+      color: var(--primary-color);
+      /* margin-bottom: 1.5rem; */
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      transition: transform 0.3s ease;
+      border: 1px solid #e0e0e0;
+    }
+
+    .contact-card span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card h4 {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      color: #333;
+    }
+
+    .designation {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0.25rem 0;
+    }
+
+    .phone-number {
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .primary .contact-header {
+      color: var(--primary-color);
+    }
+
+    .alternate .contact-header {
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 768px) {
+      .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .emergency-contacts {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-heartbeat"></i>
+        <a href="index.html">EduCare</a>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-btn database_btn">
+          <i class="fas fa-database"></i> Main Database
+        </a>
+        <a href="#" class="nav-btn request_btn">
+          <i class="fas fa-paper-plane"></i> Send Request
+        </a>
+        <a href="login.html" class="nav-btn signout_btn">
+          <i class="fas fa-sign-out-alt"></i> Sign Out
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- <div class="medical-info">
+      <h3><i class="fas fa-user-md"></i> Medical Head</h3>
+      <p><strong>Dr. Rajesh Kumar</strong></p>
+      <p><i class="fas fa-envelope"></i> medical.head@trinity.edu.np</p>
+      <p><i class="fas fa-envelope"></i> info@trinity.edu.np</p>
+    </div> -->
+    <div class="emergency-contacts">
+      <h3><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+      <div class="contact-cards">
+        <div class="contact-card primary">
+          <span>
+            <i class="fas fa-user-md"></i>
+            <span>Primary Contact</span>
+          </span>
+          <h4>Dr. Rajesh Kumar</h4>
+          <p class="designation">Medical Center Head</p>
+          <a href="tel:+97798XXXXXXXX" class="phone-number">
+            <i class="fas fa-phone"></i> +977 98XXXXXXXX
+          </a>
+        </div>
+
+        <div class="contact-card alternate">
+          <span>
+            <i class="fas fa-user-nurse"></i>
+            <span>Alternate Contact</span>
+          </span>
+          <h4>Mrs. Sarah Smith</h4>
+          <p class="designation">Emergency Response Coordinator</p>
+          <a href="tel:+97798XXXXXXXX" class="phone-number">
+            <i class="fas fa-phone"></i> +977 98XXXXXXXX
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  var college = {
+    "collegeId": "000001",
+    "collegeName": "Trinity International SS & College",
+    "accountType": "College",
+    "address": "Dillibazar height, Kathmandu",
+    "totalStudents": 2000,
+    "totalStaff": 150,
+    "phone": "+977 1 4545954/4545955/4545956",
+    "email": "feedback@trinity.edu.np",
+    "website": "www.trinity.edu.np",
+    "languages": ["English", "Nepali", "Chinese"],
+    "profilePicture": "https://www.trinity.edu.np/assets/backend/uploads/Logo/trinity%20college%20logo.jpg",
+    "facilities": {
+      "medicalCenter": true,
+      "ambulanceService": true,
+      "emergencyResponseTeam": true,
+      "bloodDonationCenter": false
+    },
+    "medicalStaff": {
+      "doctors": 2,
+      "nurses": 4,
+      "firstAidResponders": 10
+    },
+    "emergencyContacts": {
+      "primaryContact": {
+        "name": "Dr. Rajesh Kumar",
+        "position": "Medical Center Head",
+        "phone": "+977 98XXXXXXXX"
+      },
+      "alternateContact": {
+        "name": "Mrs. Sarah Smith",
+        "position": "Emergency Response Coordinator",
+        "phone": "+977 98XXXXXXXX"
+      }
+    },
+    "operatingHours": {
+      "weekdays": "6:00 AM - 6:00 PM",
+      "weekends": "Closed",
+      "medicalCenter": "8:00 AM - 4:00 PM"
+    }
+  }
+  const container = document.querySelector(".container");
+  container.innerHTML = ` <div class="info-card">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="${college.profilePicture}" alt="College Logo">
+                </div>
+                <div class="profile-header">
+                    <h2>${college.collegeName}</h2>
+                    <span class="profile-subtitle">ID: #CLG${college.collegeId}</span>
+                </div>
+            </div>
+            <div class="info-content">
+                <div class="info-group">
+                    <h3><i class="fas fa-building"></i> Institution Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> ${college.address}</p>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> ${college.phone}</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> ${college.email}</p>
+                    <p><i class="fas fa-globe"></i> <strong>Website:</strong> ${college.website}</p>
+                    <p><i class="fas fa-users"></i> <strong>Total Students:</strong> ${college.totalStudents}</p>
+                    <p><i class="fas fa-user-tie"></i> <strong>Total Staff:</strong> ${college.totalStaff}</p>
+                    <p><i class="fas fa-language"></i> <strong>Languages:</strong> ${college.languages.join(', ')}</p>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-hospital"></i> Medical Facilities</h3>
+                    <p><i class="fas fa-clinic-medical"></i> <strong>Medical Center:</strong> ${college.facilities.medicalCenter ? 'Available' : 'Not Available'}</p>
+                    <p><i class="fas fa-ambulance"></i> <strong>Ambulance Service:</strong> ${college.facilities.ambulanceService ? 'Available' : 'Not Available'}</p>
+                    <p><i class="fas fa-user-md"></i> <strong>Emergency Response Team:</strong> ${college.facilities.emergencyResponseTeam ? 'Available' : 'Not Available'}</p>
+                    <p><i class="fas fa-tint"></i> <strong>Blood Donation Center:</strong> ${college.facilities.bloodDonationCenter ? 'Available' : 'Not Available'}</p>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-user-md"></i> Medical Staff</h3>
+                    <p><i class="fas fa-user-md"></i> <strong>Doctors:</strong> ${college.medicalStaff.doctors}</p>
+                    <p><i class="fas fa-user-nurse"></i> <strong>Nurses:</strong> ${college.medicalStaff.nurses}</p>
+                    <p><i class="fas fa-first-aid"></i> <strong>First Aid Responders:</strong> ${college.medicalStaff.firstAidResponders}</p>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-clock"></i> Operating Hours</h3>
+                    <p><i class="fas fa-calendar-week"></i> <strong>Weekdays:</strong> ${college.operatingHours.weekdays}</p>
+                    <p><i class="fas fa-calendar-week"></i> <strong>Weekends:</strong> ${college.operatingHours.weekends}</p>
+                    <p><i class="fas fa-hospital"></i> <strong>Medical Center:</strong> ${college.operatingHours.medicalCenter}</p>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+                    <p><strong>Primary Contact:</strong></p>
+                    <p><i class="fas fa-user"></i> ${college.emergencyContacts.primaryContact.name}</p>
+                    <p><i class="fas fa-user-tag"></i> ${college.emergencyContacts.primaryContact.position}</p>
+                    <p><i class="fas fa-phone"></i> ${college.emergencyContacts.primaryContact.phone}</p>
+                    
+                    <p><strong>Alternate Contact:</strong></p>
+                    <p><i class="fas fa-user"></i> ${college.emergencyContacts.alternateContact.name}</p>
+                    <p><i class="fas fa-user-tag"></i> ${college.emergencyContacts.alternateContact.position}</p>
+                    <p><i class="fas fa-phone"></i> ${college.emergencyContacts.alternateContact.phone}</p>
+                </div>
+            </div>
+        </div>`;
+
+</script>
+
+<style>
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .database_btn {
+    background-color: var(--primary-color);
+  }
+
+
+  .database_btn:hover {
+    /* background-color: #1976d2; */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+  }
+
+
+  .request_btn:hover {
+    background-color: #3f9944;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  }
+
+
+
+  .medical-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+
+  .medical-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .medical-info p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+  }
+
+
+  .signout_btn:hover {
+    background-color: #e53935;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+  }
+
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: 0.8rem;
+    }
+
+    .nav-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .medical-info {
+      margin: 1rem;
+    }
+  }
+</style>
+
+</html>

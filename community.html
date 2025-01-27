@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCare - Community Portal</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-heartbeat"></i>
+        <a href="index.html">EduCare</a>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-btn database-btn">
+          <i class="fas fa-database"></i> Database
+        </a>
+        <a href="#" class="nav-btn request-btn">
+          <i class="fas fa-paper-plane"></i> Requests
+        </a>
+        <a href="#" class="nav-btn signout-btn">
+          <i class="fas fa-sign-out-alt"></i> Sign Out
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container"></div>
+
+  <script>
+    const community = {
+      "communityId": "COM001",
+      "communityName": "Dillibazar Community Center",
+      "address": "Dillibazar, Kathmandu",
+      "population": 5000,
+      "activeMembers": 250,
+      "phone": "+977 1-4444444",
+      "email": "dillibazar.community@example.com",
+      "website": "www.dillibazcommunity.org.np",
+      "profilePicture": "https://media.istockphoto.com/id/1449212413/photo/row-houses.jpg?s=612x612&w=0&k=20&c=V9MPCtAIAUTtPZJYb60furYWMlCkP8EIQGeWZSIWg-4=",
+      "facilities": {
+        "bloodBank": true,
+        "ambulanceService": true,
+        "emergencyResponse": true,
+        "donorNetwork": true
+      },
+      "emergencyContacts": {
+        "primary": {
+          "name": "Dr. Ram Kumar",
+          "position": "Community Health Director",
+          "phone": "+977 98XXXXXXXX"
+        },
+        "alternate": {
+          "name": "Mrs. Sita Sharma",
+          "position": "Blood Bank Coordinator",
+          "phone": "+977 98XXXXXXXX"
+        }
+      }
+    };
+
+    let donors = [
+      {
+        id: 1,
+        name: "John Doe",
+        bloodGroup: "A+",
+        phone: "+977 98XXXXXXXX",
+        email: "john@example.com",
+        status: "available",
+        lastDonation: "2024-01-15"
+      }
+    ];
+
+    let requests = [
+      {
+        id: 1,
+        type: "blood",
+        bloodGroup: "A+",
+        urgency: "High",
+        requiredUnits: 2,
+        contactPerson: "Jane Smith",
+        phone: "+977 98XXXXXXXX",
+        status: "active",
+        requestDate: "2024-03-15"
+      }
+    ];
+
+    function generateCommunityInfo() {
+      return `
+                <div class="info-card">
+                    <div class="profile-section">
+                        <div class="profile-image">
+                            <img src="${community.profilePicture}" alt="Community Logo">
+                        </div>
+                        <div class="profile-header">
+                            <h2>${community.communityName}</h2>
+                            <span class="profile-subtitle">ID: #${community.communityId}</span>
+                        </div>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-group">
+                            <h3><i class="fas fa-building"></i> Community Information</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> ${community.address}</p>
+                            <p><i class="fas fa-users"></i> <strong>Population:</strong> ${community.population}</p>
+                            <p><i class="fas fa-user-friends"></i> <strong>Active Members:</strong> ${community.activeMembers}</p>
+                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> ${community.phone}</p>
+                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> ${community.email}</p>
+                            <p><i class="fas fa-globe"></i> <strong>Website:</strong> ${community.website}</p>
+                        </div>
+
+                        <div class="info-group">
+                            <h3><i class="fas fa-hospital"></i> Available Facilities</h3>
+                            <p><i class="fas fa-tint"></i> <strong>Blood Bank:</strong> ${community.facilities.bloodBank ? 'Available' : 'Not Available'}</p>
+                            <p><i class="fas fa-ambulance"></i> <strong>Ambulance Service:</strong> ${community.facilities.ambulanceService ? 'Available' : 'Not Available'}</p>
+                            <p><i class="fas fa-first-aid"></i> <strong>Emergency Response:</strong> ${community.facilities.emergencyResponse ? 'Available' : 'Not Available'}</p>
+                            <p><i class="fas fa-users"></i> <strong>Donor Network:</strong> ${community.facilities.donorNetwork ? 'Available' : 'Not Available'}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="donor-management-section">
+                    <div class="section-header">
+                        <h2>Donor Management</h2>
+                        <button onclick="showDonorForm()" class="btn-primary">
+                            <i class="fas fa-plus"></i> Add New Donor
+                        </button>
+                    </div>
+
+                    <div id="donorFormContainer" style="display: none;" class="form-container">
+                        <h3>Add New Donor</h3>
+                        <form id="donorForm" onsubmit="addNewDonor(event)">
+                            <div class="form-group">
+                                <input type="text" id="donorName" required placeholder="Donor Name">
+                                <select id="bloodGroup" required>
+                                    <option value="">Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                                <input type="tel" id="phone" required placeholder="Phone Number">
+                                <input type="email" id="email" required placeholder="Email">
+                                <input type="date" id="lastDonation" required>
+                                <select id="status" required>
+                                    <option value="">Select Status</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                                <div class="form-buttons">
+                                    <button type="submit" class="btn-primary">Add Donor</button>
+                                    <button type="button" onclick="hideDonorForm()" class="btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="donorsList" class="donors-grid"></div>
+                </div>
+
+                <div class="request-management-section">
+                    <div class="section-header">
+                        <h2>Blood Request Management</h2>
+                    </div>
+                    <div class="request-buttons">
+                        <button onclick="showRequestForm('blood')" class="btn-primary">
+                            <i class="fas fa-tint"></i> Blood Request
+                        </button>
+                        <button onclick="showRequestForm('platelets')" class="btn-primary">
+                            <i class="fas fa-pills"></i> Platelets Request
+                        </button>
+                        <button onclick="showRequestForm('plasma')" class="btn-primary">
+                            <i class="fas fa-flask"></i> Plasma Request
+                        </button>
+                    </div> -->
+                    <div id="requestsList" class="requests-grid"></div>
+                </div>
+                <div class="emergency-contacts">
+    <h3><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+
+    <div class="contact-cards ">
+      <div class="contact-card primary">
+       
+          <span>
+          <i class="fas fa-user-md"></i>
+          <spam>Primary Contact</span>
+          </span>        
+          <h4>Dr. Rajesh Kumar</h4>
+          <p class="designation">Medical Center Head</p>
+          <a href="tel:+97798XXXXXXXX" class="phone-number">
+            <i class="fas fa-phone"></i> +977 98XXXXXXXX
+          </a>
+        
+      </div>
+
+      <div class="contact-card alternate">        
+          <span>
+            <i class="fas fa-user-nurse"></i>
+            <span>Alternate Contact</span>
+          </span>
+          <h4>Mrs. Sarah Smith</h4>
+          <p class="designation">Emergency Response Coordinator</p>
+          <a href="tel:+97798XXXXXXXX" class="phone-number">
+            <i class="fas fa-phone"></i> +977 98XXXXXXXX
+          </a>
+       
+      </div>
+    
+  </div>
+            `;
+    }
+
+    function showDonorForm() {
+      document.getElementById('donorFormContainer').style.display = 'block';
+    }
+
+    function hideDonorForm() {
+      document.getElementById('donorFormContainer').style.display = 'none';
+    }
+
+    function addNewDonor(event) {
+      event.preventDefault();
+      const newDonor = {
+        id: donors.length + 1,
+        name: document.getElementById('donorName').value,
+        bloodGroup: document.getElementById('bloodGroup').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        status: document.getElementById('status').value,
+        lastDonation: document.getElementById('lastDonation').value
+      };
+      donors.push(newDonor);
+      updateDonorsList();
+      hideDonorForm();
+      document.getElementById('donorForm').reset();
+    }
+
+    function deleteDonor(id) {
+      donors = donors.filter(donor => donor.id !== id);
+      updateDonorsList();
+    }
+
+    function updateDonorsList() {
+      const donorsList = document.getElementById('donorsList');
+      donorsList.innerHTML = donors.map(donor => `
+                <div class="donor-card">
+                    <div class="donor-info">
+                        <h4>${donor.name}</h4>
+                        <p><i class="fas fa-tint"></i> ${donor.bloodGroup}</p>
+                        <p><i class="fas fa-phone"></i> ${donor.phone}</p>
+                        <p><i class="fas fa-envelope"></i> ${donor.email}</p>
+                        <p><i class="fas fa-calendar"></i> Last Donation: ${donor.lastDonation}</p>
+                        <p class="status ${donor.status}">${donor.status}</p>
+                    </div>
+                    <button onclick="deleteDonor(${donor.id})" class="btn-danger">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            `).join('');
+    }
+
+    function showRequestForm(type) {
+      const requestForm = `
+                <div class="form-container">
+                    <h3>New ${type.charAt(0).toUpperCase() + type.slice(1)} Request</h3>
+                    <form onsubmit="submitRequest(event, '${type}')">
+                        <div class="form-group">
+                            <select required name="bloodGroup">
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <select required name="urgency">
+                                <option value="">Select Urgency</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                            <input type="number" required name="units" placeholder="Required Units">
+                            <input type="text" required name="contactPerson" placeholder="Contact Person">
+                            <input type="tel" required name="phone" placeholder="Contact Phone">
+                            <div class="form-buttons">
+                                <button type="submit" class="btn-primary">Submit Request</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            `;
+      document.getElementById('requestsList').innerHTML = requestForm;
+    }
+
+    function submitRequest(event, type) {
+      event.preventDefault();
+      const form = event.target;
+      const newRequest = {
+        id: requests.length + 1,
+        type: type,
+        bloodGroup: form.bloodGroup.value,
+        urgency: form.urgency.value,
+        requiredUnits: form.units.value,
+        contactPerson: form.contactPerson.value,
+        phone: form.phone.value,
+        status: 'active',
+        requestDate: new Date().toISOString().split('T')[0]
+      };
+      requests.push(newRequest);
+      updateRequestsList();
+      form.reset();
+    }
+
+    function updateRequestsList() {
+      const requestsList = document.getElementById('requestsList');
+      requestsList.innerHTML = requests.map(request => `
+                <div class="request-card ${request.urgency.toLowerCase()}">
+                    <h4>${request.type.toUpperCase()} Request</h4>
+                    <p><strong>Blood Group:</strong> ${request.bloodGroup}</p>
+                    <p><strong>Urgency:</strong> ${request.urgency}</p>
+                    <p><strong>Units Required:</strong> ${request.requiredUnits}</p>
+                    <p><strong>Contact:</strong> ${request.contactPerson}</p>
+                    <p><strong>Phone:</strong> ${request.phone}</p>
+                    <p><strong>Date:</strong> ${request.requestDate}</p>
+                    <p class="status">${request.status}</p>
+                </div>
+            `).join('');
+    }
+
+    // Initialize the page
+    document.querySelector('.container').innerHTML = generateCommunityInfo();
+    updateDonorsList();
+    updateRequestsList();
+  </script>
+
+  <style>
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .database-btn {
+      background-color: var(--primary-color);
+    }
+
+    .database-btn:hover {
+      background-color: #1976d2;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    }
+
+
+
+    .request-btn:hover {
+      background-color: #388E3C;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+
+
+
+    .signout-btn:hover {
+      background-color: #e53935;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .nav-btn {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+      }
+    }
+
+    .emergency-contacts {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 2rem auto;
+      max-width: 1000px;
+
+    }
+
+    .emergency-contacts h3 {
+      color: var(--primary-color);
+      /* margin-bottom: 1.5rem; */
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
+      display: grid;
+      /* grid-template-rows: 1fr 1fr; */
+      gap: 0;
+    }
+
+    .contact-card h4 {
+      font-size: 1.2rem;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+
+
+
+
+    .designation {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .phone-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .phone-number:hover {
+      color: var(--secondary-color);
+    }
+
+    .primary .contact-header {
+      color: var(--primary-color);
+    }
+
+    .alternate .contact-header {
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 768px) {
+      .emergency-contacts {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</body>
+
+</html>

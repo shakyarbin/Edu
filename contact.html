@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educare - Contact Help</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="./script.js" defer></script>
+    <script src="https://cdn.maptiler.com/maplibre-gl-js/v2.4.0/maplibre-gl.js"></script>
+    <link href="https://cdn.maptiler.com/maplibre-gl-js/v2.4.0/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                Educare
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="contact.html" class="active"><i class="fas fa-phone-alt"></i> Emergency Contact</a>
+                <a href="emergency.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                <a href="firstaid.html"><i class="fas fa-kit-medical"></i> First Aid</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="contact-card">
+            <div class="card-header">
+                <i class="fas fa-hospital"></i>
+                <h2>Nearby Hospitals</h2>
+            </div>
+            <div id="map"></div>
+            <ul id="hospitalList" class="contact-list">
+                <!-- Hospitals will be populated here by JavaScript -->
+            </ul>
+        </div>
+
+        <div class="contact-card">
+            <div class="card-header">
+                <i class="fas fa-users"></i>
+                <h2>Family Contacts</h2>
+            </div>
+            <ul class="contact-list">
+                <li>
+                    <div class="contact-info">
+                        <i class="fas fa-user"></i>
+                        <div class="contact-details">
+                            <span class="contact-name">Shivaram Pandey</span>
+                            <span class="contact-relation">Father</span>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <button onclick="callNumber('+977 1225336548')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="sendSMS('+977 1225336548')" class="sms-btn">
+                            <i class="fas fa-sms"></i> SMS
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-info">
+                        <i class="fas fa-user"></i>
+                        <div class="contact-details">
+                            <span class="contact-name">Sangita Pandey</span>
+                            <span class="contact-relation">Mother</span>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <button onclick="callNumber('+977 1225466348')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="sendSMS('+977 1225466348')" class="sms-btn">
+                            <i class="fas fa-sms"></i> SMS
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-info">
+                        <i class="fas fa-user"></i>
+                        <div class="contact-details">
+                            <span class="contact-name">Shuvekshya Pandey</span>
+                            <span class="contact-relation">Sister</span>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <button onclick="callNumber('+977 1225466348')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="sendSMS('+977 1225466348')" class="sms-btn">
+                            <i class="fas fa-sms"></i> SMS
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Info</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i><a href="index.html">EduCare</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="contact.html"><i class="fas fa-phone-alt"></i> Emergency Contact</a>
+                <a href="emergency.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                <a href="firstaid.html"><i class="fas fa-kit-medical"></i> First Aid</a>
+                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    </div>
+</body>
+<script>
+    var individual = {
+        "id": "000003",
+        "fullname": "Rita Sharma",
+        "address": "Baneshwor",
+        "gender": "Female",
+        "phone": "+977 9812345678",
+        "languages": "English, Nepali",
+        "dob": "08/15/1995",
+        "age": 29,
+        "profilePicture": "https://randomuser.me/api/portraits/women/65.jpg",
+        "medicalInformation": {
+            "bloodGroup": "B+",
+            "plasma": "B+",
+            "weightInKg": 60,
+            "heightInCm": 160,
+            "medicalConditions": [
+                "Asthma"
+            ],
+            "allergies": [
+                "Dust",
+                "Shellfish"
+            ],
+            "medications": [
+                "Salbutamol (100mcg)",
+                "Montelukast (10mg)"
+            ]
+        },
+        "insuranceInformation": {
+            "provider": "Nepal Life Insurance",
+            "policyNumber": "NSP123456789"
+        }
+    }
+
+
+    const container = document.querySelector(".container");
+    container.innerHTML = ` <div class="info-card">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="${individual.profilePicture}" alt="Patient Photo">
+                </div>
+                <div class="profile-header">
+                    <h2>${individual.fullname}</h2>
+                    <span class="profile-subtitle">ID: #MED${individual.id}</span>
+                </div>
+            </div>
+            <div class="info-content">
+                <div class="info-group">
+                    <h3><i class="fas fa-user-tag"></i> Personal Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong>  ${individual.address} </p>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> ${individual.phone} </p>
+                    <p><i class="fas fa-calendar"></i> <strong>DOB:</strong>${individual.dob} </p>
+                    <p><i class="fas fa-venus-mars"></i> <strong>Gender:</strong> ${individual.gender} </p>
+                    <p><i class="fas fa-id-card"></i> <strong>SSN:</strong> ${individual.ssn}</p>
+                    <p><i class="fas fa-ruler-vertical"></i> <strong>Height:</strong> ${individual.medicalInformation.heightInCm} cm</p>
+                    <p><i class="fas fa-language"></i> <strong>Language:</strong>${individual.languages} </p>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-notes-medical"></i> Medical Information</h3>
+                    <p><i class="fas fa-tint"></i> <strong>Blood Group:</strong> ${individual.medicalInformation.bloodGroup} </p>
+                    <p><i class="fas fa-tint"></i> <strong>Platelets:</strong>  ${individual.medicalInformation.platelets} </p>
+                    <p><i class="fas fa-tint"></i> <strong>Plasma</strong>  ${individual.medicalInformation.plasma} </p>
+                    <p><i class="fas fa-weight"></i> <strong>Weight:</strong> ${individual.medicalInformation.weightInKg} kg</p>
+                    <p><i class="fas fa-notes-medical"></i> <strong>Medical Conditions:</strong> ${individual.medicalInformation.medicalConditions[0]} ,${individual.medicalInformation.medicalConditions[1]}</p>
+                    <p><i class="fas fa-allergies"></i> <strong>Allergies:</strong> ${individual.medicalInformation.allergies[0]}, ${individual.medicalInformation.allergies[1]},</p>
+                    <p><i class="fas fa-pills"></i> <strong>Medications:</strong> ${individual.medicalInformation.medications[0]} , ${individual.medicalInformation.medications[1]}
+                    </p>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-file-medical"></i> Insurance Information</h3>
+                    <p><i class="fas fa-hospital-user"></i> <strong>Provider:</strong> ${individual.insuranceInformation.provider}</p>
+                    <p><i class="fas fa-id-card-alt"></i> <strong>Policy Number:</strong> ${individual.insuranceInformation.policyNumber}</p>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div class="info-card emergency-message-card">
+            <div class="card-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h2>Emergency Messages</h2>
+            </div>
+            <div class="message-content">
+                <div class="message-item">
+                    <i class="fas fa-allergies"></i>
+                    <p>I am allergic to penicillin and peanuts. Please check my medical information above.</p>
+                </div>
+                <div class="message-item">
+                    <i class="fas fa-pills"></i>
+                    <p>I take daily medication for Type 2 Diabetes and Hypertension.</p>
+                </div>
+                <div class="message-item">
+                    <i class="fas fa-language"></i>
+                    <p>I speak English and Nepali.</p>
+                </div>
+                <div class="message-item">
+                    <i class="fas fa-id-card-alt"></i>
+                    <p>My emergency contacts are listed in the Emergency Contact page.</p>
+                </div>
+            </div>
+        </div>
+        <button class="emergency-btn" onclick="window.location.href='contact.html'">
+            <i class="fas fa-ambulance"></i> Emergency Contact
+        </button> --->  `;
+</script>
+
+</html>

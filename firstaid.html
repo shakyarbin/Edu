@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educare - First Aid Guide</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                Educare
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="contact.html"><i class="fas fa-phone-alt"></i> Emergency Contact</a>
+                <a href="emergency.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                <a href="firstaid.html" class="active"><i class="fas fa-kit-medical"></i> First Aid</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="emergency-services-card">
+            <div class="card-header">
+                <i class="fas fa-kit-medical"></i>
+                <h2>First Aid Assistant</h2>
+            </div>
+            <div class="first-aid-container">
+                <div class="input-section">
+                    <h3>1. Select Emergency Type</h3>
+                    <div class="first-aid-grid">
+                        <div class="first-aid-item" data-procedure="bleeding">
+                            <i class="fas fa-droplet"></i>
+                            <span>Bleeding</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="burns">
+                            <i class="fas fa-fire-flame-simple"></i>
+                            <span>Burns</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="choking">
+                            <i class="fas fa-head-side-cough"></i>
+                            <span>Choking</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="fracture">
+                            <i class="fas fa-bone"></i>
+                            <span>Fractures</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="heartAttack">
+                            <i class="fas fa-heart-broken"></i>
+                            <span>Heart Attack</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="cpr">
+                            <i class="fas fa-heart-pulse"></i>
+                            <span>CPR</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="allergic">
+                            <i class="fas fa-allergies"></i>
+                            <span>Allergic Reaction</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="stroke">
+                            <i class="fas fa-brain"></i>
+                            <span>Stroke</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="seizure">
+                            <i class="fas fa-bolt"></i>
+                            <span>Seizure</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="heatstroke">
+                            <i class="fas fa-temperature-high"></i>
+                            <span>Heat Stroke</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="poisoning">
+                            <i class="fas fa-skull-crossbones"></i>
+                            <span>Poisoning</span>
+                        </div>
+                        <div class="first-aid-item" data-procedure="drowning">
+                            <i class="fas fa-water"></i>
+                            <span>Drowning</span>
+                        </div>
+                    </div>
+
+                    <h3>2. Additional Details (Optional)</h3>
+                    <textarea id="situationInput" placeholder="Add any specific details about the emergency situation"></textarea>
+
+                    <button onclick="getFirstAidGuidance()" class="guidance-btn" disabled>
+                        <i class="fas fa-comment-medical"></i> Get First Aid Guidance
+                    </button>
+                </div>
+
+                <div id="guidanceContent" class="guidance-content" style="display: none;">
+                    <!-- AI guidance will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educare - Emergency Services</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                Educare
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="contact.html"><i class="fas fa-phone-alt"></i> Emergency Contact</a>
+                <a href="emergency.html" class="active"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                <a href="firstaid.html"><i class="fas fa-kit-medical"></i> First Aid</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="emergency-services-card">
+            <div class="card-header">
+                <i class="fas fa-phone-volume"></i>
+                <h2>Emergency Services</h2>
+            </div>
+            <ul class="emergency-list">
+                <li>
+                    <div class="service-info">
+                        <i class="fas fa-ambulance"></i>
+                        <div class="service-details">
+                            <span class="service-name">Ambulance</span>
+                            <span class="service-number">102</span>
+                        </div>
+                    </div>
+                    <div class="service-buttons">
+                        <button onclick="callNumber('102')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="callWithSpeech('102', 'medical')" class="speech-btn">
+                            <i class="fas fa-volume-up"></i> Call with Location
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="service-info">
+                        <i class="fas fa-fire-extinguisher"></i>
+                        <div class="service-details">
+                            <span class="service-name">Fire Brigade</span>
+                            <span class="service-number">101</span>
+                        </div>
+                    </div>
+                    <div class="service-buttons">
+                        <button onclick="callNumber('101')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="callWithSpeech('101', 'fire')" class="speech-btn">
+                            <i class="fas fa-volume-up"></i> Call with Location
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="service-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="service-details">
+                            <span class="service-name">Police</span>
+                            <span class="service-number">100</span>
+                        </div>
+                    </div>
+                    <div class="service-buttons">
+                        <button onclick="callNumber('100')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="callWithSpeech('100', 'police')" class="speech-btn">
+                            <i class="fas fa-volume-up"></i> Call with Location
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="service-info">
+                        <i class="fas fa-first-aid"></i>
+                        <div class="service-details">
+                            <span class="service-name">Emergency Medical Services</span>
+                            <span class="service-number">108</span>
+                        </div>
+                    </div>
+                    <div class="service-buttons">
+                        <button onclick="callNumber('108')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="callWithSpeech('108', 'medical')" class="speech-btn">
+                            <i class="fas fa-volume-up"></i> Call with Location
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="service-info">
+                        <i class="fas fa-hands-helping"></i>
+                        <div class="service-details">
+                            <span class="service-name">Disaster Management</span>
+                            <span class="service-number">011-1070</span>
+                        </div>
+                    </div>
+                    <div class="service-buttons">
+                        <button onclick="callNumber('01111070')" class="call-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button onclick="callWithSpeech('01111070', 'disaster')" class="speech-btn">
+                            <i class="fas fa-volume-up"></i> Call with Location
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 
